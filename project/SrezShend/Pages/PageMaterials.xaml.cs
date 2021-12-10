@@ -34,6 +34,7 @@ namespace SrezShend.Pages
             cbSort.Items.Add("По стоимости");
             cbSort.SelectedIndex = 0;
 
+
             EditMat.Visibility = Visibility.Hidden;
         }
 
@@ -123,13 +124,40 @@ namespace SrezShend.Pages
         {
             FindMat();
         }
-
+        
         private void lbMat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lbMat.SelectedItem != null)
             {
                 EditMat.Visibility = Visibility.Visible;
             }
+            if (lbMat.SelectedItems.Count > 1)
+            {
+                CreateBtn_MinCountBtn();
+            }
+            else RemoveMinCountBtn();
+        }
+
+        void CreateBtn_MinCountBtn()
+        {
+            EditMat.Click += new RoutedEventHandler(EditMinCount);
+            EditMat.Content = "Изменить кол-во";
+        }
+
+        void RemoveMinCountBtn()
+        {
+            EditMat.Click += new RoutedEventHandler(EditMat_Click);
+            EditMat.Content = "Изменить";
+        }
+
+        private void EditMinCount(object sender, RoutedEventArgs e)
+        {
+            Material[] materials = new Material[lbMat.SelectedItems.Count];
+            for(int i = 0; i < lbMat.SelectedItems.Count; i++)
+            {
+                materials[i] = (Material)lbMat.SelectedItems[i];
+            }
+            NavigationService.Navigate(new PageEditMinCount(materials));
         }
     }
 }

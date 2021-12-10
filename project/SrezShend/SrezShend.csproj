@@ -94,6 +94,9 @@
     <Compile Include="Pages\PageAddMat.xaml.cs">
       <DependentUpon>PageAddMat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageEditMinCount.xaml.cs">
+      <DependentUpon>PageEditMinCount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageHistory.xaml.cs">
       <DependentUpon>PageHistory.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\PageAddMat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageEditMinCount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
